@@ -7,11 +7,12 @@ RUN apt-get update && apt-get install -y \
     libpng-dev \
     libonig-dev \
     libxml2-dev \
+    libpq-dev \
     zip \
     unzip \
     sqlite3 \
     libsqlite3-dev \
-    default-mysql-client \
+    postgresql-client \
     redis-tools \
     supervisor \
     cron \
@@ -20,8 +21,9 @@ RUN apt-get update && apt-get install -y \
 
 # Install PHP extensions
 RUN docker-php-ext-install \
-    pdo_mysql \
+    pdo_pgsql \
     pdo_sqlite \
+    pgsql \
     mbstring \
     exif \
     pcntl \

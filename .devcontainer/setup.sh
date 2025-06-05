@@ -11,9 +11,9 @@ if [ ! -f .env ]; then
     echo "⚙️ Configuring .env for devcontainer..."
     
     # Update database settings
-    sed -i 's/DB_CONNECTION=sqlite/DB_CONNECTION=mysql/' .env
-    sed -i 's/# DB_HOST=127.0.0.1/DB_HOST=mysql/' .env
-    sed -i 's/# DB_PORT=3306/DB_PORT=3306/' .env
+    sed -i 's/DB_CONNECTION=sqlite/DB_CONNECTION=pgsql/' .env
+    sed -i 's/# DB_HOST=127.0.0.1/DB_HOST=postgres/' .env
+    sed -i 's/# DB_PORT=3306/DB_PORT=5432/' .env
     sed -i 's/# DB_DATABASE=laravel/DB_DATABASE=laravel/' .env
     sed -i 's/# DB_USERNAME=root/DB_USERNAME=laravel/' .env
     sed -i 's/# DB_PASSWORD=/DB_PASSWORD=password/' .env
@@ -49,9 +49,9 @@ npm install
 echo "🔑 Generating application key..."
 php artisan key:generate --ansi
 
-# Wait for MySQL to be ready
-echo "⏳ Waiting for MySQL to be ready..."
-while ! mysqladmin ping -h mysql -u laravel -ppassword --silent 2>/dev/null; do
+# Wait for PostgreSQL to be ready
+echo "⏳ Waiting for PostgreSQL to be ready..."
+while ! pg_isready -h postgres -p 5432 -U laravel -d laravel -q 2>/dev/null; do
     sleep 1
 done
 
@@ -120,13 +120,13 @@ echo "🎉 Available commands:"
 echo "  - php artisan (or 'art') - Laravel Artisan CLI"
 echo "  - composer (or 'comp') - Composer package manager"
 echo "  - npm - Node package manager"
-echo "  - mysql - MySQL client (connect to: mysql -h mysql -u laravel -p)"
+echo "  - psql - PostgreSQL client (connect to: psql -h postgres -U laravel -d laravel)"
 echo "  - redis-cli -h redis - Redis client"
 echo ""
 echo "🌐 Services:"
 echo "  - Laravel app: http://localhost:8000 (run 'serve' or 'php artisan serve --host=0.0.0.0')"
 echo "  - Vite dev server: http://localhost:5173 (run 'npm run dev')"
-echo "  - MySQL: localhost:3306 (user: laravel, password: password)"
+echo "  - PostgreSQL: localhost:5432 (user: laravel, password: password)"
 echo "  - Redis: localhost:6379"
 echo "  - MailHog: http://localhost:8025"
 echo ""

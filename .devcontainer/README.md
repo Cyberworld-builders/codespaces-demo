@@ -12,7 +12,7 @@ This devcontainer provides a complete Laravel development environment with all n
 - **Git** - version control
 
 ### Services
-- **MySQL 8.0** - Primary database
+- **PostgreSQL 15** - Primary database
 - **Redis 7** - Cache and session storage
 - **MailHog** - Email testing tool
 
@@ -67,13 +67,13 @@ This devcontainer provides a complete Laravel development environment with all n
 - `watch` - Watch and rebuild assets
 
 ### Database & Services
-- **MySQL**: `mysql -h mysql -u laravel -p` (password: `password`)
+- **PostgreSQL**: `psql -h postgres -U laravel -d laravel` (password: `password`)
 - **Redis**: `redis-cli -h redis`
 
 ## Database Configuration
 
 The devcontainer is configured with:
-- **Host**: `mysql`
+- **Host**: `postgres`
 - **Database**: `laravel`
 - **Username**: `laravel`
 - **Password**: `password`
@@ -81,7 +81,7 @@ The devcontainer is configured with:
 ## Environment Variables
 
 The `.env` file is automatically configured for the devcontainer with:
-- MySQL database connection
+- PostgreSQL database connection
 - Redis cache and sessions
 - MailHog for email testing
 - Proper service hostnames
@@ -101,9 +101,9 @@ The `.env` file is automatically configured for the devcontainer with:
 - Configure your VS Code launch configuration
 
 ### Database Access
-- Use VS Code MySQL extension or connect directly:
+- Use VS Code PostgreSQL extension or connect directly:
   ```bash
-  mysql -h mysql -u laravel -p laravel
+  psql -h postgres -U laravel -d laravel
   ```
 
 ### Logs
@@ -128,7 +128,7 @@ Modify the `customizations.vscode` section in `devcontainer.json`.
 - Try rebuilding: "Dev Containers: Rebuild Container"
 
 ### Database Connection Issues
-- Ensure MySQL container is running
+- Ensure PostgreSQL container is running
 - Check environment variables in `.env`
 
 ### Permission Issues
@@ -150,7 +150,7 @@ npm run build
 The following ports are automatically forwarded:
 - **8000** - Laravel application
 - **5173** - Vite development server
-- **3306** - MySQL database
+- **5432** - PostgreSQL database
 - **6379** - Redis
 - **8025** - MailHog web interface
 
