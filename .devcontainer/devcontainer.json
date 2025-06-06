@@ -121,7 +121,9 @@
     "features": {
         "ghcr.io/devcontainers/features/git:1": {},
         "ghcr.io/devcontainers/features/github-cli:1": {},
-        "ghcr.io/devcontainers/features/ssh:1": {}
+        "ghcr.io/devcontainers/features/sshd:1": {
+            "version": "latest"
+        }
     },
 
     "forwardPorts": [8000, 3000, 5173, 5432, 6379, 8025],
