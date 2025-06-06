@@ -1,0 +1,160 @@
+{
+    "name": "Laravel Development Environment",
+    "dockerComposeFile": "docker-compose.yml",
+    "service": "laravel",
+    "workspaceFolder": "/workspace",
+    
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-vscode.vscode-json",
+                "bmewburn.vscode-intelephense-client",
+                "MehediDracula.php-namespace-resolver",
+                "onecentlin.laravel-blade",
+                "onecentlin.laravel5-snippets",
+                "codingyu.laravel-goto-view",
+                "amiralizadeh9480.laravel-extra-intellisense",
+                "ms-playwright.playwright",
+                "bradlc.vscode-tailwindcss",
+                "formulahendry.auto-rename-tag",
+                "ms-vscode.vscode-typescript-next",
+                "esbenp.prettier-vscode",
+                "ms-vscode.live-server",
+                "GitLab.gitlab-workflow",
+                "streetsidesoftware.code-spell-checker"
+            ],
+            "settings": {
+                "php.validate.executablePath": "/usr/local/bin/php",
+                "php.suggest.basic": false,
+                "intelephense.stubs": [
+                    "apache",
+                    "bcmath",
+                    "bz2",
+                    "calendar",
+                    "com_dotnet",
+                    "Core",
+                    "ctype",
+                    "curl",
+                    "date",
+                    "dba",
+                    "dom",
+                    "enchant",
+                    "exif",
+                    "FFI",
+                    "fileinfo",
+                    "filter",
+                    "fpm",
+                    "ftp",
+                    "gd",
+                    "gettext",
+                    "gmp",
+                    "hash",
+                    "iconv",
+                    "imap",
+                    "intl",
+                    "json",
+                    "ldap",
+                    "libxml",
+                    "mbstring",
+                    "meta",
+                    "mysqli",
+                    "oci8",
+                    "odbc",
+                    "openssl",
+                    "pcntl",
+                    "pcre",
+                    "PDO",
+                    "pdo_ibm",
+                    "pdo_mysql",
+                    "pdo_pgsql",
+                    "pdo_sqlite",
+                    "pgsql",
+                    "Phar",
+                    "posix",
+                    "pspell",
+                    "readline",
+                    "Reflection",
+                    "session",
+                    "shmop",
+                    "SimpleXML",
+                    "snmp",
+                    "soap",
+                    "sockets",
+                    "sodium",
+                    "SPL",
+                    "sqlite3",
+                    "standard",
+                    "superglobals",
+                    "sysvmsg",
+                    "sysvsem",
+                    "sysvshm",
+                    "tidy",
+                    "tokenizer",
+                    "xml",
+                    "xmlreader",
+                    "xmlrpc",
+                    "xmlwriter",
+                    "xsl",
+                    "Zend OPcache",
+                    "zip",
+                    "zlib"
+                ],
+                "intelephense.files.maxSize": 5000000,
+                "editor.formatOnSave": true,
+                "editor.codeActionsOnSave": {
+                    "source.fixAll": true
+                },
+                "emmet.includeLanguages": {
+                    "blade": "html"
+                },
+                "files.associations": {
+                    "*.blade.php": "blade"
+                },
+                "tailwindCSS.includeLanguages": {
+                    "blade": "html"
+                },
+                "tailwindCSS.emmetCompletions": true
+            }
+        }
+    },
+
+    "features": {
+        "ghcr.io/devcontainers/features/git:1": {},
+        "ghcr.io/devcontainers/features/github-cli:1": {},
+        "ghcr.io/devcontainers/features/sshd:1": {
+            "version": "latest"
+        }
+    },
+
+    "forwardPorts": [8000, 3000, 5173, 5432, 6379, 8025],
+    "portsAttributes": {
+        "8000": {
+            "label": "Laravel App",
+            "onAutoForward": "notify"
+        },
+        "3000": {
+            "label": "Node.js Dev Server",
+            "onAutoForward": "ignore"
+        },
+        "5173": {
+            "label": "Vite Dev Server",
+            "onAutoForward": "notify"
+        },
+        "5432": {
+            "label": "PostgreSQL Database",
+            "onAutoForward": "ignore"
+        },
+        "6379": {
+            "label": "Redis Cache",
+            "onAutoForward": "ignore"
+        },
+        "8025": {
+            "label": "MailHog Web UI",
+            "onAutoForward": "ignore"
+        }
+    },
+
+    "postCreateCommand": "chmod +x .devcontainer/setup.sh && .devcontainer/setup.sh",
+
+    "remoteUser": "vscode"
+} 
